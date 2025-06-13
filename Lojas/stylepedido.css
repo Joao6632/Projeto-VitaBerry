@@ -1,0 +1,164 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+/* --- Barra Lateral (Sidebar) --- */
+.sidebar {
+    width: 200px;
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.company-logo {
+    max-width: 80px; /* Ajuste o tamanho máximo da sua logo */
+    height: auto; /* Mantém a proporção */
+    display: block; /* Remove espaço extra abaixo da imagem */
+    margin: 0 auto; /* Centraliza a logo */
+    padding: 5px; /* Um pouco de padding se a imagem tiver bordas transparentes */
+    /* Se a sua logo original tiver o formato circular, e você quiser que ela pareça uma bola: */
+    /* border-radius: 50%; */
+}
+
+.sidebar-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #333;
+    transition: background-color 0.2s ease; /* Transição suave no hover/ativo */
+}
+
+.sidebar-item:hover {
+    background-color: #e0e0e0;
+}
+
+.sidebar-item.active {
+    background-color: orange; /* Cor de fundo laranja para o item ativo, como na imagem */
+    color: white;
+}
+
+.sidebar-footer {
+    margin-top: auto; /* Empurra o logout para baixo */
+}
+
+.nav-arrow {
+    font-weight: bold;
+}
+
+/* --- Conteúdo Principal (Main Content) --- */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Organiza header e order-section em coluna */
+    align-items: center; /* Centraliza horizontalmente o conteúdo principal */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    width: 100%; /* Ocupa a largura total para que os elementos fiquem nas pontas */
+    max-width: 800px; /* Alinha com a largura máxima da order-section */
+}
+
+/* --- Seção de Pedido (Campos Maiores e Centralizados) --- */
+.order-section {
+    display: flex;
+    flex-direction: column; /* Por padrão, empilha verticalmente para telas menores */
+    gap: 20px; /* Espaço entre os blocos */
+    width: 90%; /* Ocupa 90% da largura do main-content */
+    max-width: 800px; /* Limita a largura máxima para os campos não ficarem muito grandes */
+    margin-top: 20px; /* Espaço do header */
+    flex-grow: 1; /* Permite que cresça para preencher o espaço vertical */
+    justify-content: center; /* Centraliza os itens verticalmente dentro da order-section */
+    align-items: center; /* Centraliza horizontalmente (útil se um bloco for mais estreito) */
+}
+
+.info-block { /* Estilo base para ambos os blocos */
+    background-color: #fff;
+    padding: 25px; /* Aumenta o padding interno dos blocos */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    flex: 1; /* Permite que o bloco cresça */
+    width: 100%; /* Ocupa a largura total disponível em modo coluna */
+}
+
+.order-input-block, .order-summary-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-summary-block {
+    justify-content: space-between; /* Empurra o botão para baixo */
+}
+
+.input-group {
+    margin-bottom: 20px; /* Mais espaço entre os grupos de input */
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px; /* Mais espaço abaixo do label */
+    font-weight: bold;
+    font-size: 1.1em; /* Torna o label um pouco maior */
+}
+
+.input-group select,
+.input-group input[type="number"] {
+    width: calc(100% - 24px); /* Ajustado para compensar o padding */
+    padding: 12px; /* Aumenta o padding para inputs maiores */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.1em; /* Aumenta a fonte dos inputs */
+}
+
+.order-actions {
+    margin-top: auto; /* Empurra as ações (botão) para o final do bloco */
+    text-align: right;
+}
+
+.complete-order-btn {
+    background-color: #4C3B5E; /* Um tom de azul/roxo similar ao da imagem */
+    color: white;
+    padding: 12px 25px; /* Aumenta o padding do botão */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em; /* Aumenta a fonte do botão */
+    transition: background-color 0.3s ease; /* Transição suave no hover */
+}
+
+.complete-order-btn:hover {
+    background-color: #6a4f8d; /* Um tom um pouco mais claro no hover */
+}
+
+/* --- Responsividade para telas maiores --- */
+@media (min-width: 768px) {
+    .order-section {
+        flex-direction: row; /* Blocos lado a lado em telas maiores */
+        align-items: flex-start; /* Alinha os blocos ao topo */
+        height: auto; /* Remove altura fixa, deixa o conteúdo definir a altura */
+    }
+
+    .order-input-block, .order-summary-block {
+        flex: 1; /* Dividem o espaço igualmente */
+        padding: 30px; /* Aumenta o padding em telas maiores */
+    }
+}

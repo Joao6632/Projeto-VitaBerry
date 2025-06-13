@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>VitaBerry</title>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar">
+    <button id="toggleSidebar">&#x25C0;</button>
+
+    <div class="nav-item">Início</div>
+    <div class="nav-item">Fabricação</div>
+    <div class="nav-item nav-selected">Estoque</div>
+    <div class="nav-item">Lojas</div>
+
+    <div class="logout">
+      <img src="imagens/logoutVita.png" alt="Logout" class="logout-icon" onclick="logout()" />
+      <span class="logout-text">Logout</span>
+    </div>
+  </aside>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="container">
+    <div class="topbar">
+      <div class="logo-topbar">
+        <img src="imagens/LOGO VITABERRY.png" alt="Logo Vitaberry" />
+      </div>
+      <div>(User)</div>
+    </div>
+
+    <div class="estoque-title">Estoque</div>
+
+    <div class="filter-box">
+      <span>&#x1F5C2;</span>
+      <input type="text" placeholder="Código, sabor, data de fabricação/vencimento" />
+    </div>
+
+    <div class="item">
+      <div>
+        <div class="item-code">A03</div>
+        <div>Banana</div>
+      </div>
+      <div class="actions">
+        <button class="icon-button">
+          <img src="imagens/info.png" alt="Informações" class="info-icon">
+        </button>
+      </div>
+    </div>
+
+    <div class="item">
+      <div>
+        <div class="item-code">A02</div>
+        <div>Puro</div>
+      </div>
+      <div class="actions">
+        <button class="icon-button">
+          <img src="imagens/info.png" alt="Informações" class="info-icon">
+        </button>
+      </div>
+    </div>
+
+    <div class="item">
+      <div>
+        <div class="item-code">A01</div>
+        <div>Batido</div>
+      </div>
+      <div class="actions">
+        <button class="icon-button">
+          <img src="imagens/info.png" alt="Informações" class="info-icon">
+        </button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

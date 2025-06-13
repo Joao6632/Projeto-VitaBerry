@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard da Loja</title>
+    <link rel="stylesheet" href="stylepedido.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div>
+            <div class="sidebar-header">
+                <img src="logo_da_empresa.png" alt="Logo da Empresa" class="company-logo">
+            </div>
+            <div class="sidebar-item">Início</div>
+            <div class="sidebar-item active">Pedido:</div> <div class="sidebar-item nav-arrow"><--</div>
+        </div>
+        <div class="sidebar-footer">
+            <div class="sidebar-item">Logout</div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Loja 1</h1>
+            <span>(User)</span>
+        </div>
+
+        <div class="pedido-section">
+            <!-- Bloco para inserir pedido -->
+            <div class="formulario-pedido">
+                <label for="produto">Selecionar produto:</label>
+                <select id="produto">
+                    <option value="Tradicional">Tradicional</option>
+                    <option value="Puro">Puro</option>
+                    <option value="Banana">Banana</option>
+                    <option value="Com xarope">Com xarope</option>
+                </select>
+        
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" min="1" placeholder="Digite a quantidade">
+            </div>
+        
+            <!-- Bloco que exibe o resumo do pedido -->
+            <div class="resumo-pedido">
+                <p><strong>Produto:</strong> <span id="resumo-produto">-</span></p>
+                <p><strong>Data do pedido:</strong> <span id="resumo-data">-</span></p>
+                <p><strong>Quantidade:</strong> <span id="resumo-quantidade">-</span></p>
+        
+                <button onclick="concluirPedido()">Concluir pedido</button>
+            </div>
+        </div>
+        
+
+
+
+                <div class="order-actions">
+                    <button class="complete-order-btn">concluir pedido</button>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    <script src="scriptpedido.js"></script>
+</body>
+</html>
