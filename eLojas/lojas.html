@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="loja.css" />
+  <title>VitaBerry</title>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar">
+    <button id="toggleSidebar">&#x25C0;</button>
+
+    <div class="nav-item ">Início</div>
+    <div class="nav-item ">Fabricação</div>
+    <div class="nav-item ">Estoque</div>
+    <div class="nav-item nav-selected">Lojas</div>
+
+    <div class="logout">
+      <img src="imagens/logoutVita.png" alt="Logout" class="logout-icon" onclick="logout()" />
+      <span class="logout-text">Logout</span>
+    </div>
+  </aside>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="container">
+    <div class="topbar">
+      <div class="logo-topbar">
+        <img src="imagens/LOGO VITABERRY.png" alt="Logo Vitaberry" />
+      </div>
+      <div>(User)</div>
+    </div>
+
+    <div class="estoque-title">Lojas</div>
+
+    <div class="filter-box">
+      <span>&#x1F5C2;</span>
+      <input type="text" placeholder="buscar por lojas" />
+    </div>
+
+    <div class="item">
+      <div>
+        <div class="item-code">loja 1</div>
+        <div>17563 Albuquerque Marginal - São José da Tapera, RJ / 72775-429</div>
+      </div>
+      <div class="actions">
+        <button class="icon-button">&#x1F5D7;</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <div>
+        <div class="item-code">Loja 2</div>
+        <div>880 Breno Rodovia - Surubim, SP / 12278-636</div>
+      </div>
+      <div class="actions">
+        <button class="icon-button">&#x1F5D7;</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <div>
+        <div class="item-code">Loja 3</div>
+        <div>555 Rebeca Travessa - Barreirinha, RN / 70741-608</div>
+      </div>
+      <div class="actions">
+        <button class="icon-button">&#x1F5D7;</button>
+      </div>
+    </div>
+  </div>
+  <script src="loja.js"></script>
+</body>
+</html>

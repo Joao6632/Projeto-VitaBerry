@@ -1,0 +1,159 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  
+  body {
+    display: flex;
+    height: 100vh;
+  }
+  
+  aside {
+    width: 200px;
+    background: #fff;
+    border-right: 2px solid black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: width 0.3s ease;
+    position: relative;
+  }
+  
+  aside.collapsed {
+    width: 60px;
+  }
+  
+  #toggleSidebar {
+    position: absolute;
+    top: 60px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.3s ease;
+  }
+  
+  aside.collapsed #toggleSidebar {
+    transform: rotate(180deg);
+  }
+  
+  .nav-item {
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  
+  .nav-item:hover,
+  .nav-selected {
+    background: #9469fa;
+    color: black;
+    border: 2px solid black;
+  }
+  
+  .logout {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  
+  .logout-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+  
+  .logout-text {
+    font-size: 14px;
+  }
+  
+  aside.collapsed .nav-item,
+  aside.collapsed .logout-text {
+    display: none;
+  }
+  
+  .container {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    border-bottom: 2px solid black;
+    padding: 0 20px;
+  }
+  
+  .logo-topbar {
+    height: 50px;
+  }
+  
+  .logo-topbar img {
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .estoque-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+  
+  .filter-box {
+    display: flex;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    max-width: 500px;
+  }
+  
+  .filter-box input {
+    border: none;
+    outline: none;
+    margin-left: 10px;
+    flex: 1;
+  }
+  
+  .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin: 15px 0;
+  }
+  
+  .item-code {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .icon-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
