@@ -10,3 +10,8 @@ function logout() {
     confirm('Você irá deslogar, quer prosseguir?')
     window.location.href = '../aLogin/index.html'
 }
+
+
+
+
+</script>

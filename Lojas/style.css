@@ -1,3 +1,4 @@
+/* =================== RESET GLOBAL =================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,6 +11,7 @@
     height: 100vh;
   }
   
+  /* =================== SIDEBAR =================== */
   aside {
     width: 200px;
     background: #fff;
@@ -84,11 +86,21 @@
     display: none;
   }
   
+  /* =================== CONTEÚDO PRINCIPAL =================== */
   .container {
     flex: 1;
     padding: 20px;
+  
+    /* ✅ Centraliza apenas na horizontal */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    /* ✅ Espaço do topo ajustado */
+    margin-top: 40px;
   }
   
+  /* Topbar da página */
   .topbar {
     display: flex;
     justify-content: space-between;
@@ -96,6 +108,7 @@
     height: 60px;
     border-bottom: 2px solid black;
     padding: 0 20px;
+    width: 100%;
   }
   
   .logo-topbar {
@@ -113,6 +126,7 @@
     margin: 20px 0;
   }
   
+  /* =================== FILTRO =================== */
   .filter-box {
     display: flex;
     align-items: center;
@@ -129,6 +143,7 @@
     flex: 1;
   }
   
+  /* =================== ITENS / PRODUTOS =================== */
   .item {
     display: flex;
     justify-content: space-between;
@@ -155,5 +170,69 @@
     background: none;
     cursor: pointer;
     font-size: 20px;
+  }
+  
+  /* =================== DASHBOARD (Infos + Gráfico) =================== */
+  .dashboard-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    max-width: 800px;
+    align-items: center;
+  }
+  
+  .info-block {
+    background-color: #f9f9f9;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    width: 100%;
+  }
+  
+  .dashboard-info p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+  }
+  
+  .dashboard-info p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Gráfico */
+  .chart-block {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  #myChart {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  /* =================== RESPONSIVIDADE =================== */
+  @media (min-width: 768px) {
+    .dashboard-content {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  
+    .dashboard-info {
+      flex: 1;
+      max-width: 300px;
+    }
+  
+    .chart-block {
+      flex: 2;
+      height: 400px;
+    }
   }
   

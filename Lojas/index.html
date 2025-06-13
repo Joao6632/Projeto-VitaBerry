@@ -1,37 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="style.css" />
-  <title>VitaBerry</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>VitaBerry</title>
 </head>
 <body>
 
-    <aside id="sidebar">
-    <button id="toggleSidebar">&#x25C0;</button>
+  <!-- SIDEBAR -->
+  <aside id="sidebar">
+    <button id="toggleSidebar"></button>
 
-   <div class="nav-item nav-selected">Início</div>
-     <div class="nav-item">Pedido</div>
-    
+   <div class="nav-item nav-selected">Início</div>
+     <div class="nav-item">Pedido</div>
+    
+    <div class="logout">
+      <img src="imagens/logoutVita.png" alt="Logout" class="logout-icon" onclick="logout()" />
+      <span class="logout-text">Logout</span>
+    </div>
+  </aside>
 
-    <div class="logout">
-      <img src="imagens/logoutVita.png" alt="Logout" class="logout-icon" onclick="logout()" />
-      <span class="logout-text">Logout</span>
-    </div>
-  </aside>
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="container">
+    <div class="topbar">
+      <div class="logo-topbar">
+        <img src="imagens/LOGO VITABERRY.png" alt="Logo Vitaberry" />
+      </div>
+      <div>(User)</div>
+    </div>
 
-    <div class="container">
-    <div class="topbar">
-      <div class="logo-topbar">
-        <img src="imagens/LOGO VITABERRY.png" alt="Logo Vitaberry" />
-      </div>
-      <div>(User)</div>
-    </div>
-
-    <div class="estoque-title">Loja 1</div>
-
-    <div class="dashboard-content">
+   <div class="estoque-title">Loja 1</div>
+    
+<div class="dashboard-content">
         <div class="info-block dashboard-info">
             <p><strong>Gerente:</strong> [Nome do Gerente]</p>
             <p><strong>Estoque:</strong> [Quantidade]</p>
@@ -41,10 +42,14 @@
         <div class="info-block chart-block">
             <canvas id="myChart"></canvas>
         </div>
-    </div>
-      </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="script.js"></script>
+    
+      <div class="actions">
+        <button class="icon-button">&#x1F5D7;</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
+
