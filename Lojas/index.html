@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="balde.css" />
   <title>VitaBerry</title>
 </head>
 <body>
@@ -11,10 +12,9 @@
   <!-- SIDEBAR -->
   <aside id="sidebar">
     <button id="toggleSidebar"></button>
+    <div class="nav-item nav-selected" onclick="window.location.href='index.html'">Início</div>
+    <div class="nav-item" onclick="window.location.href='indexpedido.html'">Pedido</div>
 
-   <div class="nav-item nav-selected">Início</div>
-     <div class="nav-item">Pedido</div>
-    
     <div class="logout">
       <img src="imagens/logoutVita.png" alt="Logout" class="logout-icon" onclick="logout()" />
       <span class="logout-text">Logout</span>
@@ -30,26 +30,29 @@
       <div>(User)</div>
     </div>
 
-   <div class="estoque-title">Loja 1</div>
-    
-<div class="dashboard-content">
-        <div class="info-block dashboard-info">
-            <p><strong>Gerente:</strong> [Nome do Gerente]</p>
-            <p><strong>Estoque:</strong> [Quantidade]</p>
-            <p><strong>Pedido:</strong> [Status/Detalhes]</p>
-            <p><strong>Uso:</strong> [Dados de Uso]</p>
-        </div>
-        <div class="info-block chart-block">
-            <canvas id="myChart"></canvas>
-        </div>
+    <div class="estoque-title">Loja 1</div>
 
-    
-      <div class="actions">
-        <button class="icon-button">&#x1F5D7;</button>
+    <div class="dashboard-content">
+      <div class="info-block dashboard-info">
+        <p><strong>Gerente:</strong> [Nome do Gerente]</p>
+        <p><strong>Estoque:</strong> [Quantidade]</p>
+        <p><strong>Pedido:</strong> [Status/Detalhes]</p>
+        <p><strong>Uso:</strong> [Dados de Uso]</p>
       </div>
+      
+    <!-- VISUALIZAÇÃO DAS QUANTIDADES DE BALDES -->
+    <div class="info-block">
+      <h2>Quantidade (Baldes)</h2>
+      <table class="balde-table">
+        <tr><td>Tradicional</td><td><span id="tradicional">0</span></td></tr>
+        <tr><td>Puro</td><td><span id="puro">0</span></td></tr>
+        <tr><td>Banana</td><td><span id="banana">0</span></td></tr>
+        <tr><td>Mel</td><td><span id="mel">0</span></td></tr>
+        <tr><td>Com xarope</td><td><span id="xarope">0</span></td></tr>
+      </table>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
-

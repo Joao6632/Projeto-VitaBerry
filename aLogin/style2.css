@@ -22,7 +22,7 @@ body {
     color: #fff !important;
     font-weight: bold;
     margin-right: auto;
-    margin-left: auto;
+    margin-left: 4rem;
 }
 
 #foto1 {
@@ -102,3 +102,4 @@ a {
     text-decoration: none !important;
     color: inherit;
   }
+

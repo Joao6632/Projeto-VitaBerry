@@ -5,13 +5,8 @@ toggleBtn.addEventListener("click", () => {
   sidebar.classList.toggle("collapsed");
 });
 
-
 function logout() {
-    confirm('Você irá deslogar, quer prosseguir?')
-    window.location.href = '../aLogin/index.html'
+  if (confirm('Você irá deslogar, quer prosseguir?')) {
+    window.location.href = '../aLogin/index.html';
+  }
 }
-
-
-
-
-</script>

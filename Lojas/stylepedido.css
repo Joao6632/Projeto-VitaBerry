@@ -46,7 +46,7 @@ body {
 }
 
 .sidebar-item.active {
-    background-color: orange; /* Cor de fundo laranja para o item ativo, como na imagem */
+    background: purple; 
     color: white;
 }
 
