@@ -1,0 +1,219 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  
+  body {
+    display: flex;
+    height: 100vh;
+  }
+  
+  aside {
+    width: 200px;
+    background: #fff;
+    border-right: 2px solid black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: width 0.3s ease;
+    position: relative;
+  }
+  
+  aside.collapsed {
+    width: 60px;
+  }
+  
+  #toggleSidebar {
+    position: absolute;
+    top: 60px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.3s ease;
+  }
+  
+  aside.collapsed #toggleSidebar {
+    transform: rotate(180deg);
+  }
+  
+  .nav-item {
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  
+  .nav-item:hover,
+  .nav-selected {
+    background: #9469fa;
+    color: black;
+    border: 2px solid black;
+  }
+  
+  .logout {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  
+  .logout-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+  
+  .logout-text {
+    font-size: 14px;
+  }
+  
+  aside.collapsed .nav-item,
+  aside.collapsed .logout-text {
+    display: none;
+  }
+  
+  .container {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    border-bottom: 2px solid black;
+    padding: 0 20px;
+  }
+  
+  .logo-topbar {
+    height: 50px;
+  }
+  
+  .logo-topbar img {
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .main-content {
+    flex: 1; 
+    padding: 20px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  .Fabricacao-title {
+    font-size: 50px; 
+    font-weight: bold;
+    margin-bottom: 50px; 
+    position: relative; 
+    padding-bottom: 10px; 
+    width: fit-content; 
+    text-align: center; 
+  }
+  
+  .Fabricacao-title .underline {
+    position: absolute; 
+    bottom: 0; 
+    left: -100px; 
+    right: -100px; 
+    height: 2px; 
+    background-color: black; 
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    max-width: 900px; 
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between; 
+    gap: 20px; 
+}
+
+.form-row input[type="text"],
+.form-row input[type="date"],
+.form-row input[type="number"],
+.form-row select {
+    flex: 1;
+    padding: 15px 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    color: black;
+}
+
+.form-row input::placeholder,
+.form-row select option[value=""] {
+    color: #666;
+}
+
+.form-row select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M287%2069.9a15.7%2015.7%200%2001-22.3%200L146.2%20188.4%2027.6%2069.9a15.7%2015.7%200%2001-22.3%200%2015.7%2015.7%200%20010%2022.3l130%20130c6.1%206.1%2015.7%206.1%2021.8%200l130-130a15.7%2015.7%200%20010-22.3z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 10px;
+    padding-right: 40px;
+}
+
+.form-row input[readonly] {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+}
+
+.create-lot-button {
+    padding: 15px 30px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    align-self: center;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    
+}
+
+.create-lot-button:hover {
+    background-color: #ffffff;
+}
+
+.form-row label {
+    display: block; 
+    margin-bottom: 5px; 
+    font-weight: bold; 
+    color: #333; 
+}
+
+.form-row div { 
+    flex: 1;
+    display: flex;
+    flex-direction: column; 
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+  }
+

@@ -19,10 +19,15 @@
             <h2>Login</h2>
             
             <div class="mb-3">
-                <label for="cpfEmail" class="form-label">CPF ou E-mail</label>
-                <input type="text" class="form-control" id="cpfEmail" placeholder="Digite seu CPF ou E-mail" required>
+                <label for="cpfEmail" class="form-label">CPF</label>
+                <input type="text" class="form-control" id="cpfEmail" placeholder="Digite seu CPF" required oninput="aplicarMascaraCPF(this)">
             </div>
             
+            <div class="mb-3">
+                <label for="e-mail" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="email" placeholder="Digite seu Email para contato" required>
+            </div>
+
             <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>
                 <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required>
@@ -31,7 +36,7 @@
             <button type="submit" class="btn-iniciar">Entrar</button>
         </form>
     </div>
-
+    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

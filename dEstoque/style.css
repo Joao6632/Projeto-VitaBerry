@@ -173,3 +173,8 @@ aside.collapsed .logout-text {
   align-items: center;
   justify-content: center;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

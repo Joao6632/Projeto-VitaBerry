@@ -108,56 +108,61 @@
   }
   
   .main-content {
-    flex: 1; /* Ocupa o restante do espaço vertical disponível */
-    padding: 20px; /* Espaçamento interno */
-    display: flex; /* Usa Flexbox */
-    flex-direction: column; /* Conteúdo empilhado verticalmente */
-    align-items: center; /* Centraliza o conteúdo horizontalmente (incluindo o título) */
+    flex: 1; 
+    padding: 20px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
   }
   
   .recent-productions-title {
-    font-size: 36px; /* Define o tamanho da fonte para ser maior */
-    font-weight: bold; /* Deixa o texto em negrito */
-    margin-bottom: 20px; /* Adiciona espaço abaixo do título */
-    position: relative; /* Necessário para posicionar a linha sublinhada */
-    padding-bottom: 10px; /* Adiciona espaço entre o texto e a linha */
-    width: fit-content; /* Faz com que a largura do elemento se ajuste ao conteúdo, para a linha */
-    text-align: center; /* Centraliza o texto dentro do próprio div do título */
+    font-size: 50px; 
+    font-weight: bold;
+    margin-bottom: 50px; 
+    position: relative; 
+    padding-bottom: 10px; 
+    width: fit-content; 
+    text-align: center; 
   }
   
   .recent-productions-title .underline {
-    position: absolute; /* Posicionamento absoluto em relação ao pai (.recent-productions-title) */
-    bottom: 0; /* Alinha na parte inferior do pai */
-    left: 0; /* Alinha na esquerda do pai */
-    width: 100%; /* Faz a linha ocupar 100% da largura do texto */
-    height: 2px; /* Espessura da linha */
-    background-color: black; /* Cor da linha */
+    position: absolute; 
+    bottom: 0; 
+    left: -100px; 
+    right: -100px; 
+    height: 2px; 
+    background-color: black; 
   }
 
   .chart-carousel-box {
-    border: 3px solid black; /* Cria a borda preta */
-    border-radius: 10px; /* Arredonda os cantos da caixa */
-    padding: 40px; /* Espaçamento interno da caixa */
-    margin-top: 30px; /* Espaço entre o título e a caixa */
-    display: flex; /* Usa Flexbox para o conteúdo interno (título e subtítulo) */
-    flex-direction: column; /* Conteúdo empilhado verticalmente */
-    justify-content: center; /* Centraliza o conteúdo verticalmente dentro da caixa */
-    align-items: center; /* Centraliza o conteúdo horizontalmente dentro da caixa */
-    height: 300px; /* Altura fixa da caixa */
-    width: 100%; /* Ocupa a largura total disponível */
-    max-width: 800px; /* Limita a largura máxima da caixa */
-    align-self: center; /* Centraliza a caixa em relação ao seu contêiner pai (.main-content) */
+    border: 3px solid black; 
+    border-radius: 10px;
+    padding: 40px; 
+    margin-top: 30px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    height: 300px;
+    width: 100%; 
+    max-width: 800px; 
+    align-self: center;
   }
   
   .chart-carousel-title {
-    font-size: 28px; /* Tamanho da fonte do título do carrossel */
-    font-weight: bold; /* Negrito */
-    margin-bottom: 10px; /* Espaço abaixo do título */
-    text-align: center; /* Centraliza o texto */
+    font-size: 28px; 
+    font-weight: bold; 
+    margin-bottom: 10px; 
+    text-align: center; 
   }
   
   .chart-carousel-subtitle {
-    font-size: 18px; /* Tamanho da fonte do subtítulo */
-    color: #555; /* Cor cinza para o texto */
-    text-align: center; /* Centraliza o texto */
+    font-size: 18px; 
+    color: #555; 
+    text-align: center; 
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
   }

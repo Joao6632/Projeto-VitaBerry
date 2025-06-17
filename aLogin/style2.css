@@ -86,9 +86,19 @@ body {
     font-size: 1rem;
     transition: background-color 0.3s ease;
     margin-top: 10px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .btn-iniciar:hover {
     background-color: #5a32a3;
     cursor: pointer;
 }
+
+a {
+    text-decoration: none !important;
+    color: inherit;
+  }

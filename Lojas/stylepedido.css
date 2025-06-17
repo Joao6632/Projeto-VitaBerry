@@ -162,3 +162,7 @@ body {
         padding: 30px; /* Aumenta o padding em telas maiores */
     }
 }
+a {
+    text-decoration: none;
+    color: inherit;
+  }

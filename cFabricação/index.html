@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="imagem/LOGO VITABERRY.png" type="image/png">
+  <title>VitaBerry</title>
+</head>
+<body>
+  <aside id="sidebar">
+    <button id="toggleSidebar">&#x25C0;</button>
+
+    <a href="../bInicio/index.html" class="nav-item ">Início</a>
+    <a href="../cFabricação/index.html" class="nav-item nav-selected">Fabricação</a>
+    <a href="../dEstoque/index.html" class="nav-item ">Estoque</a>
+    <a href="../eLojas/lojas.html" class="nav-item">Lojas</a>
+    <div class="logout">
+      <span>&#x21B6;</span>
+      <span class="logout-text">Logout</span>
+    </div>
+  </aside>
+  <div class="container">
+    <div class="topbar">
+      <div class="logo-topbar">
+        <img src="imagem/LOGO VITABERRY.png" alt="Logo Vitaberry"/>
+      </div>
+      <div>(User)</div>
+    </div>
+
+    <div class="main-content">
+        <div class="Fabricacao-title">
+          Fabricação
+          <div class="underline"></div> 
+        </div>
+        <form class="form-container">
+            <div class="form-row">
+                <div>
+                    <label for="codigoLote">Código de lote</label>
+                    <input type="text" id="codigoLote" value="(automático)" readonly>
+                </div>
+                <div>
+                    <label for="dataValidade">Data de validade</label>
+                    <input type="date" id="dataValidade">
+                </div>
+            </div>
+    
+            <div class="form-row">
+                <div>
+                    <label for="saborAcai">Sabor do açaí</label>
+                    <select id="saborAcai">
+                        <option value="">Selecione o sabor</option>
+                        <option value="tradicional">Tradicional</option>
+                        <option value="banana">Banana</option>
+                        <option value="morango">Morango</option>
+                        </select>
+                </div>
+                <div>
+                    <label for="qtdBaldes">Quantidade de baldes</label>
+                    <input type="number" id="qtdBaldes" min="0">
+                </div>
+            </div>
+    
+            <div class="form-row">
+                <div>
+                    <label for="dataFabricacao">Data de fabricação</label>
+                    <input type="date" id="dataFabricacao">
+                </div>
+                <div>
+                    <label for="dataEntradaEstoque">Data de entrada no estoque</label>
+                    <input type="text" id="dataEntradaEstoque" value="(automático)" readonly>
+                </div>
+            </div>
+    
+            <button type="submit" class="create-lot-button">Criar lote</button>
+        </form>
+    </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
