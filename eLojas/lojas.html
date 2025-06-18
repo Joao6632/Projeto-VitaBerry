@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="loja.css" />
   <link rel="icon" href="imagem/LOGO VITABERRY.png" type="image/png">
   <title>VitaBerry</title>
 </head>
+
 <body>
 
-  <!-- SIDEBAR -->
   <aside id="sidebar">
     <button id="toggleSidebar">&#x25C0;</button>
 
@@ -23,8 +24,7 @@
       <span class="logout-text">Logout</span>
     </div>
   </aside>
-  
-  <!-- CONTEÚDO PRINCIPAL -->
+
   <div class="container">
     <div class="topbar">
       <div class="logo-topbar">
@@ -37,30 +37,33 @@
 
     <div class="filter-box">
       <span>&#x1F5C2;</span>
-      <input type="text" placeholder="buscar por lojas" />
+      <input type="text" placeholder="buscar por lojas" id="searchInput" />
     </div>
 
-    <div class="item">
-      <div>
-        <div class="item-code">loja 1</div>
-        <div>17563 Albuquerque Marginal - São José da Tapera, RJ / 72775-429</div>
-      </div>
-    </div>
+    <div id="lojasContainer">
+      <a href="../Lojas/Loja1/index.html" class="item item-link">
+        <div>
+          <div class="item-code">loja 1</div>
+          <div>17563 Albuquerque Marginal - São José da Tapera, RJ / 72775-429</div>
+        </div>
+      </a>
 
-    <div class="item">
-      <div>
-        <div class="item-code">Loja 2</div>
-        <div>880 Breno Rodovia - Surubim, SP / 12278-636</div>
-      </div>
-    </div>
+      <a href="../Lojas/Loja2/index.html" class="item item-link">
+        <div>
+          <div class="item-code">Loja 2</div>
+          <div>880 Breno Rodovia - Surubim, SP / 12278-636</div>
+        </div>
+      </a>
 
-    <div class="item">
-      <div>
-        <div class="item-code">Loja 3</div>
-        <div>555 Rebeca Travessa - Barreirinha, RN / 70741-608</div>
-      </div>
+      <a href="../Lojas/Loja3/index.html" class="item item-link">
+        <div>
+          <div class="item-code">Loja 3</div>
+          <div>555 Rebeca Travessa - Barreirinha, RN / 70741-608</div>
+        </div>
+      </a>
     </div>
   </div>
   <script src="loja.js"></script>
 </body>
+
 </html>

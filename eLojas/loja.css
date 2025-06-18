@@ -137,8 +137,18 @@
     border-radius: 10px;
     padding: 10px 15px;
     margin: 15px 0;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
   }
   
+  .item-link:hover {
+    background-color: #9469fa;
+    border-color: #9469fa;
+    color: white;
+  }
+
   .item-code {
     font-weight: bold;
     font-size: 20px;

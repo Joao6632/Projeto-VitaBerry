@@ -158,8 +158,10 @@ aside.collapsed .logout-text {
 }
 
 .info-icon {
-  width: 20px; /* Ajuste conforme necessário */
-  height: 20px; /* Ajuste conforme necessário */
+  width: 20px;
+  /* Ajuste conforme necessário */
+  height: 20px;
+  /* Ajuste conforme necessário */
   object-fit: contain;
 }
 
@@ -168,7 +170,8 @@ aside.collapsed .logout-text {
   background: none;
   cursor: pointer;
   font-size: 20px;
-  padding: 5px; /* Adiciona um pouco de espaço ao redor do ícone */
+  padding: 5px;
+  /* Adiciona um pouco de espaço ao redor do ícone */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -273,20 +276,251 @@ a {
 .item-main {
   display: flex;
   flex-direction: column;
-  gap: 0; /* Remove o espaçamento entre os itens */
+  gap: 0;
+  /* Remove o espaçamento entre os itens */
 }
 
 .item-code {
   font-weight: bold;
   font-size: 20px;
-  margin-bottom: 0; /* Remove a margem inferior */
-  line-height: 0.5; /* Ajusta o espaçamento da linha */
+  margin-bottom: 0;
+  /* Remove a margem inferior */
+  line-height: 0.5;
+  /* Ajusta o espaçamento da linha */
 }
 
 .item-sabor {
   font-size: 16px;
-  margin-top: 2px; /* Espaçamento mínimo */
-  margin-bottom: 0; /* Remove a margem inferior */
+  margin-top: 2px;
+  /* Espaçamento mínimo */
+  margin-bottom: 0;
+  /* Remove a margem inferior */
 }
 
 /* Mantenha o restante do CSS como está */
+
+/* Estilos do Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 3px solid black;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 400px;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.loja-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.loja-option {
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.loja-option:hover {
+  background-color: #9469fa;
+}
+
+.btn-iniciar-distribuicao {
+  background-color: #9469fa;
+  border: 2px solid black;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.btn-iniciar-distribuicao:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-em-distribuicao {
+  background-color: white;
+  border: 2px solid black;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.btn-em-distribuicao.ativo {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Adicione APENAS estas regras ao final do seu CSS */
+
+.historico-distribuicao {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.historico-tabela {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.historico-cabecalho {
+  font-weight: bold;
+  padding: 5px 0;
+  border-bottom: 2px solid #ddd;
+}
+
+.historico-linha {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-historico {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-historico-conteudo {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  border: 3px solid black;
+  max-width: 700px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-historico-conteudo h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.historico-tabela-modal {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.historico-tabela-modal .historico-cabecalho {
+  background-color: #f0f0f0;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.historico-tabela-modal .historico-linha {
+  padding: 8px 10px;
+}
+
+.btn-fechar-historico {
+  margin-top: 20px;
+  padding: 8px 20px;
+  background-color: #9469fa;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-fechar-historico:hover {
+  background-color: #8358e9;
+}
+
+.btn-iniciar-distribuicao:disabled,
+.btn-em-distribuicao:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #cccccc !important;
+  border-color: #999999 !important;
+  color: #666666 !important;
+}
+
+/* Mantenha o hover apenas para botões ativos */
+.btn-iniciar-distribuicao:not(:disabled):hover {
+  background-color: #8358e9 !important;
+}
+
+.btn-em-distribuicao:not(:disabled):hover {
+  background-color: #f0f0f0 !important;
+}
+
+/* Tag Esgotado */
+.tag-esgotado {
+  position: absolute;
+  top: 10px;
+  right: 200px;
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  border: 1px solid #f5c6cb;
+}
+
+/* Ajuste de posicionamento do item */
+.item {
+  position: relative;
+  padding-right: 70px; /* Espaço para a tag */
+}
+
+/* Botões desativados */
+.btn-iniciar-distribuicao:disabled,
+.btn-em-distribuicao:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #e9ecef !important;
+  border-color: #ced4da !important;
+  color: #6c757d !important;
+}
+
+/* Efeito hover apenas para botões ativos */
+.btn-iniciar-distribuicao:not(:disabled):hover {
+  background-color: #8358e9 !important;
+}
+
+.btn-em-distribuicao:not(:disabled):hover {
+  background-color: #f0f0f0 !important;
+}

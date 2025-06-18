@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="stylepedido.css" />
+  <link rel="icon" href="imagem/LOGO VITABERRY.png" type="image/png">
+  <title>VitaBerry</title>
+</head>
+<body>
+  <aside id="sidebar">
+    <button id="toggleSidebar"></button>
+    <div class="nav-item " onclick="window.location.href='index.html'">Início</div>
+    <div class="nav-item nav-selected" onclick="window.location.href='indexpedido.html'">Pedido</div>
+
+    <div class="logout">
+      <img src="imagens/logoutVita.png" alt="Logout" class="logout-icon" onclick="logout()" />
+      <span class="logout-text">Logout</span>
+    </div>
+  </aside>
+  <div class="container">
+    <div class="topbar">
+      <div class="logo-topbar">
+        <img src="/Lojas/imagem/LOGO VITABERRY.png" alt="Logo Vitaberry">
+      </div>
+      <div>(User)</div>
+    </div>
+
+    <div class="main-content">
+        <div class="loja-header">
+            <h2>Loja 3</h2>
+            <div class="underline"></div>
+            
+        </div>
+        
+        <div class="order-input-section">
+            <button class="form-button">Selecionar Produto</button>
+            <div class="input-group">
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" placeholder="(num)" min="1">
+            </div>
+            <button class="form-button">Selecionar Data</button>
+        </div>
+
+        <div class="pedido-details-card">
+            <div class="pedido-details">
+                <p>Nome: <span id="produto-nome">(produto nome)</span></p>
+                <p>Quantidade: <span id="quantidade-display">(num)</span></p>
+                <p>Data estimada: <span id="data-estimada">dd/mm/aa</span></p>
+                <p>Endereço do estabelecimento:</p>
+                <p>Gerente:</p>
+            </div>
+        
+            <button class="concluir-pedido-btn" onclick="concluirPedido()">Concluir pedido</button>
+        </div>
+    </div>
+  </div>
+    <script src="scriptpedido.js"></script>
+    </body>
+  </html>

@@ -8,18 +8,16 @@
   <title>VitaBerry</title>
 </head>
 <body>
-    <aside id="sidebar">
-        <button id="toggleSidebar">&#x25C0;</button>
-    
-        <a href="../Lojas/index.html" class="nav-item">Início</a>
-        <a href="../Lojas/indexpedido.html" class="nav-item nav-selected">Pedidos</a>
-        
-    
-        <div class="logout">
-          <img src="imagem/logoutVita.png" alt="Logout" class="logout-icon" onclick="logout()" />
-          <span class="logout-text">Logout</span>
-        </div>
-    </aside>    
+  <aside id="sidebar">
+    <button id="toggleSidebar"></button>
+    <div class="nav-item" onclick="window.location.href='index.html'">Início</div>
+    <div class="nav-item nav-selected" onclick="window.location.href='indexpedido.html'">Pedido</div>
+
+    <div class="logout">
+      <img src="imagens/logoutVita.png" alt="Logout" class="logout-icon" onclick="logout()" />
+      <span class="logout-text">Logout</span>
+    </div>
+  </aside>    
   <div class="container">
     <div class="topbar">
       <div class="logo-topbar">

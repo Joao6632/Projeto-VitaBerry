@@ -6,6 +6,20 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="./imagens/LOGO VITABERRY.png" type="image/png">
   <title>VitaBerry</title>
+  <style>
+    /* Estilo adicional para o modal de confirmação */
+    #confirmacaoModal .modal-content {
+      max-width: 300px;
+      text-align: center;
+      padding: 30px;
+    }
+
+    #confirmacaoText p {
+      margin: 10px 0;
+      line-height: 1.4;
+      font-size: 18px;
+    }
+  </style>
 </head>
 <body>
 
@@ -44,6 +58,37 @@
     <div id="estoqueContainer"></div>
   </div>
 
+  <!-- Modal de seleção de loja -->
+  <div id="lojaModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Para qual loja deseja iniciar a distribuição?</h2>
+      <div class="loja-list">
+        <button class="loja-option">Loja 1</button>
+        <button class="loja-option">Loja 2</button>
+        <button class="loja-option">Loja 3</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de confirmação de distribuição -->
+  <div id="confirmacaoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="fecharModalConfirmacao()">&times;</span>
+      <div id="confirmacaoText" style="text-align: center;"></div>
+    </div>
+  </div>
+
+  <div id="quantidadeModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="fecharModalQuantidade()">&times;</span>
+      <h2>Qual a quantidade de baldes a serem distribuídos?</h2>
+      <label for="inputQuantidade"><strong>Quantidade:</strong></label>
+      <input type="number" id="inputQuantidade" min="1" style="margin: 10px 0; padding: 8px; width: 100%; border: 2px solid black; border-radius: 5px;">
+      <button onclick="confirmarDistribuicao()" style="padding: 10px; border: 2px solid black; background-color: #9469fa; border-radius: 5px; font-weight: bold;">Confirmar</button>
+    </div>
+  </div>
+  
   <script src="script.js"></script>
 </body>
 </html>

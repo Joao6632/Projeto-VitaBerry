@@ -134,35 +134,117 @@
     background-color: black; 
   }
 
-  .chart-carousel-box {
-    border: 3px solid black; 
-    border-radius: 10px;
-    padding: 40px; 
-    margin-top: 30px; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    height: 300px;
-    width: 100%; 
-    max-width: 800px; 
-    align-self: center;
-  }
+  /* CONTAINER PRINCIPAL DO CARROSSEL E SEUS TÍTULOS */
+/* CONTAINER PRINCIPAL DO CARROSSEL E SEUS TÍTULOS */
+.chart-carousel-box {
+  border: none; /* Garante que não haja borda */
+  border-radius: 10px;
+  padding: 40px; 
   
-  .chart-carousel-title {
-    font-size: 28px; 
-    font-weight: bold; 
-    margin-bottom: 10px; 
-    text-align: center; 
-  }
+  /* CENTRALIZAÇÃO DO BOX NA PÁGINA */
+  width: 100%; 
+  max-width: 800px; 
+  margin-top: 20px; /* Mantém a margem superior */
+  margin-left: auto; /* Centraliza horizontalmente */
+  margin-right: auto; /* Centraliza horizontalmente */
+  margin-bottom: 20px; /* Adiciona uma margem inferior */
   
-  .chart-carousel-subtitle {
-    font-size: 18px; 
-    color: #555; 
-    text-align: center; 
-  }
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; /* Centraliza o conteúdo verticalmente dentro do box */
+  align-items: center; /* Centraliza o conteúdo horizontalmente dentro do box */
+  min-height: 350px; /* Adicionei uma altura mínima razoável para o box do carrossel */
+  align-self: center; /* Útil se o elemento pai for um flex container */
+}
 
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
+/* TÍTULO DO CARROSSEL */
+.chart-carousel-title {
+  font-size: 28px; 
+  font-weight: bold; 
+  margin-bottom: 0px; /* Ajuste para o título subir, aproximando do subtítulo */
+  text-align: center; 
+}
+
+/* SUBTÍTULO DO CARROSSEL */
+.chart-carousel-subtitle {
+  font-size: 18px; 
+  color: #555; 
+  text-align: center; 
+  margin-bottom: 20px; /* Ajuste para o subtítulo se afastar do carrossel principal */
+}
+
+/* ESTILO GERAL PARA LINKS */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* CARROSSEL EM SI (Onde os slides estão) */
+#chart-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Largura máxima para o carrossel */
+  margin: auto; /* Centraliza o carrossel dentro do seu contêiner pai (.chart-carousel-box) */
+  border: none; /* Removendo qualquer borda potencial */
+  
+  /* CRUCIAL PARA CONTROLAR O ESTICAMENTO DO GRÁFICO */
+  height: 300px; /* Defina uma altura para o carrossel. Ajuste conforme necessário. */
+  overflow: hidden; /* Garante que o conteúdo que exceda a altura seja cortado */
+}
+
+/* CONTÊINER DOS SLIDES (onde os gráficos de lote são inseridos dinamicamente) */
+#chart-carousel .slides {
+  display: flex;
+  overflow: hidden; /* Importante para que apenas o slide visível seja mostrado */
+  justify-content: center; /* Centraliza o conteúdo horizontalmente (slides ou mensagem de vazio) */
+  align-items: center; /* Centraliza o conteúdo verticalmente */
+  
+  /* CRUCIAL: Faz o contêiner de slides preencher a altura do carrossel */
+  height: 100%; 
+}
+
+
+/* BOTÕES DE NAVEGAÇÃO DO CARROSSEL */
+#chart-carousel .prev, 
+#chart-carousel .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10; /* Garante que os botões fiquem acima dos gráficos */
+}
+
+#chart-carousel .prev { left: 10px; }
+#chart-carousel .next { right: 10px; }
+
+/* REGRAS PARA OS SLIDES DE LOTE (estrutura que o JS agora utiliza) */
+.lote-slide { 
+  width: 100%; 
+  flex-shrink: 0; 
+  text-align: center; /* Centraliza o texto e elementos inline/inline-block dentro do slide */
+  padding: 20px; 
+  box-sizing: border-box; 
+  display: flex; /* Transforma o slide em um container flex */
+  flex-direction: column; /* Organiza os itens internos (gráficos) em coluna */
+  justify-content: center; /* Centraliza os itens verticalmente dentro do slide */
+  align-items: center; /* Centraliza os itens horizontalmente dentro do slide */
+
+  /* CRUCIAL: Faz o slide individual preencher a altura do contêiner .slides */
+  height: 100%; 
+  overflow-y: auto; /* Adiciona rolagem se o conteúdo do lote for muito grande */
+}
+
+/* Canvas dentro de um lote-slide (regra mais específica) */
+.lote-slide canvas {
+  max-width: 100%; 
+  height: auto; 
+  margin: 10px auto; /* Centraliza os gráficos individualmente e adiciona espaçamento */
+  display: block; /* Necessário para margin: auto funcionar em elementos canvas */
+  
+  /* CRUCIAL PARA CONTROLAR O ESTICAMENTO DO GRÁFICO */
+  max-height: 80%; /* Limita a altura máxima que o canvas pode ocupar dentro do lote-slide */
+}

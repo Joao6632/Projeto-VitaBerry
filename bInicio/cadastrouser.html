@@ -16,7 +16,7 @@
     </nav>
 
     <div class="container">
-        <form id="login">
+        <form id="login" onsubmit="return cadastrar()">
             <h2>Cadastro</h2>
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome</label>
@@ -36,14 +36,58 @@
                 <label for="senha" class="form-label">Senha</label>
                 <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required>
 
-            <div class="mb-3">
-                    <label for="funcao" class="form-label">Função</label>
-                    <input type="select" class="form-control" id="funcao" placeholder="Digite a função do usuário" required>
-             </div>
-            
-            <button type="submit" class="btn-iniciar">Entrar</button>
+            <!-- CAMPO DE FUNÇÃO -->
+<div class="mb-3">
+    <label for="funcao" class="form-label">Função</label>
+    <select class="form-control" id="funcao" required onchange="verificarFuncao()">
+      <option value="" disabled selected hidden>Selecione uma função...</option>
+      <option value="gerenteFabrica">Gerente de fábrica</option>
+      <option value="gerenteLoja">Gerente de loja</option>
+      <option value="nutricionista">Nutricionista</option>
+      <option value="funcionario">Funcionário</option>
+    </select>
+  </div>
+  
+  <!-- CAMPO DA LOJA (APARECE SÓ SE FOR GERENTE DE LOJA) -->
+  <div class="mb-3" id="campoLoja" style="display: none;">
+    <label for="loja" class="form-label">Loja</label>
+    <select class="form-control" id="loja">
+      <option value="" disabled selected hidden>Selecione a loja...</option>
+      <option value="1">Loja Norte</option>
+      <option value="2">Loja Sul</option>
+    </select>
+  </div>
+  
+              
+            <button type="submit" class="btn-iniciar" >Entrar</button>
         </form>
     </div>
+    <script>
+        function cadastrar(){
+            const nome = document.getElementById('nome').value.trim();
+
+            if (nome == ''){
+                alert("Preencha todos os dados")
+                return false
+            } else{
+                alert("Usuário cadastrado! Salve os dados da sessão para efetuar o login.")
+                window.location.href = "/bInicio/index.html";
+                return false
+}
+                    
+        }
+        function verificarFuncao() {
+    const funcao = document.getElementById('funcao').value;
+    const campoLoja = document.getElementById('campoLoja');
+
+    if (funcao === 'gerenteLoja') {
+      campoLoja.style.display = 'block'; // mostra o campo loja
+    } else {
+      campoLoja.style.display = 'none'; // esconde se for outra função
+      document.getElementById('loja').selectedIndex = 0; // reseta seleção
+    }
+  }
+    </script>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
