@@ -1,0 +1,105 @@
+/* Reset e estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+/* Navbar */
+#barra {
+    background-color: #6f42c1 !important;
+    padding: 15px;
+}
+
+.navbar-brand {
+    font-size: 28px;
+    color: #fff !important;
+    font-weight: bold;
+    margin-right: auto;
+    margin-left: 4rem;
+}
+
+#foto1 {
+    height: 40px;
+    position: absolute;
+    left: 20px;
+}
+
+/* Formulário de login */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+#login {
+    background-color: white;
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#login h2 {
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.form-control:focus {
+    border-color: #6f42c1;
+    box-shadow: 0 0 0 0.25rem rgba(111, 66, 193, 0.25);
+}
+
+/* Botão */
+.btn-iniciar {
+    background-color: #6f42c1;
+    border: none;
+    width: 100%;
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.btn-iniciar:hover {
+    background-color: #5a32a3;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none !important;
+    color: inherit;
+  }
+

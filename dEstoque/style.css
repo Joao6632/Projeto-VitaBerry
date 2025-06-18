@@ -178,3 +178,115 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+.detalhes {
+  background-color: #f9f9f9;
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.acoes-detalhes button {
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: 1px solid black;
+  background: white;
+  cursor: pointer;
+}
+
+/* Estilos para os itens de estoque */
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+.item-main {
+  flex: 1;
+  min-width: 200px;
+}
+
+.item-code {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.item-sabor {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.item-details {
+  display: none;
+  width: 100%;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px solid #ddd;
+}
+
+.item-details p {
+  margin-bottom: 8px;
+}
+
+.detail-label {
+  font-weight: bold;
+  display: inline-block;
+  min-width: 150px;
+}
+
+.acoes-detalhes {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.acoes-detalhes button {
+  padding: 8px 15px;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.acoes-detalhes button:first-child {
+  background-color: #9469fa;
+}
+
+/* Quando os detalhes estão visíveis */
+.item.expanded {
+  background-color: #f8f8f8;
+}
+
+.item.expanded .item-details {
+  display: block;
+}
+
+/* Adicione isso no final do seu CSS */
+.item-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* Remove o espaçamento entre os itens */
+}
+
+.item-code {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 0; /* Remove a margem inferior */
+  line-height: 0.5; /* Ajusta o espaçamento da linha */
+}
+
+.item-sabor {
+  font-size: 16px;
+  margin-top: 2px; /* Espaçamento mínimo */
+  margin-bottom: 0; /* Remove a margem inferior */
+}
+
+/* Mantenha o restante do CSS como está */
