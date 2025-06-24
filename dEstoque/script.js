@@ -229,3 +229,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
   carregarLotes();
 });
+
+const filtroInput = document.querySelector('.filter-box input');
+const estoqueContainer = document.getElementById('estoqueContainer');
+
+filtroInput.addEventListener('input', e => {
+  const termo = e.target.value.toUpperCase();
+  const items = estoqueContainer.querySelectorAll('.item');
+
+  items.forEach(item => {
+    const texto = item.textContent.toUpperCase();
+    // Se bate, exibe como flex (ou grid), senão some
+    item.style.display = texto.includes(termo) ? 'flex' : 'none';
+  });
+});
+

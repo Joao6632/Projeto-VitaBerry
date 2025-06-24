@@ -1,3 +1,5 @@
+
+
 function aplicarMascaraCPF(input) {
     let valor = input.value.replace(/\D/g, ''); // tira tudo que não é número
   
@@ -11,15 +13,18 @@ function aplicarMascaraCPF(input) {
     input.value = valor;
   }
   
+ // VERIFCAÇÂO
   const form = document.getElementById('login');
-  
   form.addEventListener('submit', function (e) {
     e.preventDefault(); // cancela envio padrão
-  
-    const cpf = document.getElementById('cpfEmail').value.replace(/\D/g, '');
+
+
+    const cpf = document.getElementById('cpf').value.replace(/\D/g, '');
     const email = document.getElementById('email').value.trim();
     const senha = document.getElementById('senha').value.trim();
-  
+
+
+
     const cpfValido = /^\d{11}$/.test(cpf);
     const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   
@@ -43,23 +48,22 @@ function aplicarMascaraCPF(input) {
   });
   
   // Pra aplicar a máscara enquanto digita
-  document.getElementById('cpfEmail').addEventListener('input', function () {
+  document.getElementById('cpf').addEventListener('input', function () {
     aplicarMascaraCPF(this);
   });
   
-  function salvarUsuario(){
-    const email = document.getElementById('email').value;
-    const senha = document.getElementById('senha').value;
-    
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-    
-    const usuarioLogado = usuarios.find(u => u.email === email && u.senha === senha);
-    
-    if (usuarioLogado) {
-      // Salva só o usuário logado
-      localStorage.setItem("usuarioLogado", JSON.stringify(usuarioLogado));
-      window.location.href = "painel.html"; // ou a tela principal
-    } else {
-      alert("Email ou senha inválidos");
-    }
-  }
+  //MOSTRAR NOME DO USUARIO
+  function salvarUsuario() {
+  const novoUSuario = {
+    nome: document.getElementById('nome').value,
+    email: document.getElementById('email').value,
+    senha: document.getElementById('senha').value,
+    cargo: document.getElementById('cargo').value
+};
+const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+usuarios.push(novoUsuario);
+localStorage.setItem("usuarios", JSON.stringify(usuarios));
+}
+
+/*PRECISA ARRUMAR ESSE COISO DE MOSTAR  O NOOME DO USUARIO, O SCRIPT
+ TA DIVIDIDO EM MUITAS PAGINAS, MAS ATÈ AGORA Só TEM NO LOGIN E CADASTRO*/

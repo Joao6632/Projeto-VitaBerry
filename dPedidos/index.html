@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="./imagens/LOGO VITABERRY.png" type="image/png" />
+  <title>VitaBerry</title>
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <aside id="sidebar">
+    <button id="toggleSidebar">&#x25C0;</button>
+
+    <a href="../bInicio/index.html" class="nav-item">Início</a>
+    <a href="../cFabricação/index.html" class="nav-item">Fabricação</a>
+    <a href="../dEstoque/index.html" class="nav-item">Estoque</a>
+    <a href="../eLojas/lojas.html" class="nav-item">Lojas</a>
+    <a href="../dPedidos/index.html" class="nav-item nav-selected">Pedidos</a>
+
+    <div class="logout">
+      <img
+        src="imagem/logoutVita.png"
+        alt="Logout"
+        class="logout-icon"
+        onclick="logout()"
+      />
+      <span class="logout-text">Logout</span>
+    </div>
+  </aside>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="container">
+    <div class="topbar">
+      <div class="logo-topbar">
+        <img src="imagem/LOGO VITABERRY.png" alt="Logo Vitaberry" />
+      </div>
+      <div class="username">(User)</div>
+    </div>
+
+    <div class="estoque-title">Pedidos - Lojas</div>
+
+    <div class="filter-box">
+      <span>&#x1F5C2;</span>
+      <input
+        type="text"
+        placeholder="Código, sabor, data de fabricação/vencimento"
+      />
+    </div>
+
+    <!-- AQUI OS PEDIDOS VÃO SER INSERIDOS PELO JS -->
+    <div id="estoqueContainer"></div>
+  </div>
+
+  <!-- Modais (mantidos iguais) -->
+  <div id="lojaModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Para qual loja deseja iniciar a distribuição?</h2>
+      <div class="loja-list">
+        <button class="loja-option">Loja 1</button>
+        <button class="loja-option">Loja 2</button>
+        <button class="loja-option">Loja 3</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="infoModal" class="modal" style="display: none">
+    <div class="modal-content">
+      <span id="closeInfoModal" class="close-modal">&times;</span>
+      <h3>Detalhes do Pedido</h3>
+      <div id="infoModalContent"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -12,7 +12,14 @@ function logout() {
     window.location.href = '../aLogin/index.html';
   }
 }
+// MOSTRAR NOME DE USUARIO
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 59cdfd4 (Versão 1.2)
 // —————— GRÁFICO DE ESTOQUE TOTAL ——————
 document.addEventListener("DOMContentLoaded", () => {
   // Verifica se o elemento do gráfico existe na página
@@ -161,4 +168,8 @@ function showErrorMessage(message) {
         <small>Verifique o console para detalhes</small>
       </div>`;
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 59cdfd4 (Versão 1.2)

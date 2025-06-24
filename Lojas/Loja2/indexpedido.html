@@ -10,7 +10,7 @@
 <body>
   <aside id="sidebar">
     <button id="toggleSidebar"></button>
-    <div class="nav-item " onclick="window.location.href='index.html'">Início</div>
+    <div class="nav-item" onclick="window.location.href='index.html'">Início</div>
     <div class="nav-item nav-selected" onclick="window.location.href='indexpedido.html'">Pedido</div>
 
     <div class="logout">
@@ -21,9 +21,9 @@
   <div class="container">
     <div class="topbar">
       <div class="logo-topbar">
-        <img src="/Lojas/imagem/LOGO VITABERRY.png" alt="Logo Vitaberry">
+        <img src="imagens/LOGO VITABERRY.png" alt="Logo Vitaberry" />
       </div>
-      <div>(User)</div>
+      <div class="username">(User)</div>
     </div>
 
     <div class="main-content">
@@ -34,21 +34,24 @@
         </div>
         
         <div class="order-input-section">
-            <button class="form-button">Selecionar Produto</button>
+            <label for="product-select">Selecionar Produto:</label>
+            <select id="product-select" class="form-select">
+                <option value="">-- Selecione um produto --</option>
+                </select>
+
             <div class="input-group">
                 <label for="quantidade">Quantidade:</label>
                 <input type="number" id="quantidade" placeholder="(num)" min="1">
             </div>
-            <button class="form-button">Selecionar Data</button>
-        </div>
+            
+            </div>
 
         <div class="pedido-details-card">
             <div class="pedido-details">
                 <p>Nome: <span id="produto-nome">(produto nome)</span></p>
                 <p>Quantidade: <span id="quantidade-display">(num)</span></p>
-                <p>Data estimada: <span id="data-estimada">dd/mm/aa</span></p>
-                <p>Endereço do estabelecimento:</p>
-                <p>Gerente:</p>
+                <p>Endereço do estabelecimento: <span id="endereco-loja">Surubim, SP / 12278-636</span></p>
+                <p>Gerente: <span id="gerente-nome"></span></p>
             </div>
         
             <button class="concluir-pedido-btn" onclick="concluirPedido()">Concluir pedido</button>

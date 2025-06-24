@@ -1,96 +1,139 @@
-// Lógica que é executada quando o HTML estiver totalmente carregado
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Seleção de Elementos HTML ---
     const productSelect = document.getElementById('product-select');
-    const quantityInput = document.getElementById('quantity-input');
-    const summaryProductName = document.getElementById('summary-product-name');
-    const summaryOrderDate = document.getElementById('summary-order-date');
-    const summaryQuantity = document.getElementById('summary-quantity');
-    const completeOrderBtn = document.querySelector('.complete-order-btn');
+    const quantityInput = document.getElementById('quantidade');
+    const summaryProductName = document.getElementById('produto-nome');
+    const summaryQuantity = document.getElementById('quantidade-display');
+    const gerenteNomeSpan = document.getElementById('gerente-nome');
+    const enderecoLojaSpan = document.getElementById('endereco-loja');
+    const nomeLoja = document.querySelector('.loja-header h2').textContent.trim(); // Pega "Loja 1", "Loja 2" ou "Loja 3"
 
-    // --- Lógica para preencher a data atual ---
-    const today = new Date();
-    const formattedDate = today.toLocaleDateString('pt-BR'); // Formato de data local
-    if (summaryOrderDate) {
-        summaryOrderDate.textContent = formattedDate; // Atualiza o conteúdo do span
-    }
+    // --- Popular o Dropdown de Produtos com dados do localStorage ---
+    const lotesSalvos = JSON.parse(localStorage.getItem("lotes")) || [];
+
+    const saboresUnicos = new Set();
+    lotesSalvos.forEach(lote => {
+        if (lote.sabor) {
+            saboresUnicos.add(lote.sabor);
+        }
+    });
+
+    saboresUnicos.forEach(sabor => {
+        const option = document.createElement('option');
+        option.value = sabor;
+        option.textContent = sabor;
+        productSelect.appendChild(option);
+    });
 
     // --- Função para atualizar o resumo do pedido ---
     const updateOrderSummary = () => {
         const selectedProductText = productSelect.options[productSelect.selectedIndex].textContent;
         const enteredQuantity = quantityInput.value;
 
-        // Atualiza o texto dos spans no resumo
         if (summaryProductName) {
-            summaryProductName.textContent = selectedProductText || '(nome produto)';
+            summaryProductName.textContent = selectedProductText && selectedProductText !== '-- Selecione um produto --' ? selectedProductText : '(produto nome)';
         }
         if (summaryQuantity) {
-            summaryQuantity.textContent = enteredQuantity || '[Quantidade]';
+            summaryQuantity.textContent = enteredQuantity || '(num)';
         }
     };
 
-    // --- Adiciona 'listeners' para atualizar o resumo quando houver mudanças ---
-    if (productSelect) {
-        productSelect.addEventListener('change', updateOrderSummary);
-    }
-    if (quantityInput) {
-        quantityInput.addEventListener('input', updateOrderSummary); // 'input' detecta cada mudança
-    }
+    // --- Atualiza o resumo sempre que mudar produto ou quantidade ---
+    productSelect.addEventListener('change', updateOrderSummary);
+    quantityInput.addEventListener('input', updateOrderSummary);
 
-    // --- Lógica para o botão "concluir pedido" ---
-    if (completeOrderBtn) {
-        completeOrderBtn.addEventListener('click', () => {
-            const selectedProduct = productSelect.value;
-            const quantity = parseInt(quantityInput.value, 10); // Converte para número inteiro
-
-            if (selectedProduct && quantity > 0) {
-                alert(`Pedido Concluído:\nProduto: ${productSelect.options[productSelect.selectedIndex].textContent}\nQuantidade: ${quantity}\nData: ${formattedDate}`);
-                // Em um projeto real, aqui você enviaria esses dados para um servidor (backend)
-
-                // Opcional: Limpa os campos após "concluir"
-                productSelect.value = ''; // Reseta a seleção
-                quantityInput.value = '1'; // Reseta a quantidade
-                updateOrderSummary(); // Atualiza o resumo para refletir os campos limpos
-            } else {
-                alert('Por favor, selecione um produto e insira uma quantidade válida (maior que zero).');
-            }
-        });
-    }
-
-    // --- Lógica para a Barra Lateral (Sidebar) ---
-    const sidebarItems = document.querySelectorAll('.sidebar-item');
-
-    sidebarItems.forEach(item => {
-        item.addEventListener('click', () => {
-            // Remove a classe 'active' de todos os itens
-            sidebarItems.forEach(i => i.classList.remove('active'));
-            // Adiciona a classe 'active' apenas ao item clicado
-            item.classList.add('active');
-
-            console.log(`Item clicado: ${item.textContent}`);
-            // Aqui você adicionaria a lógica para carregar conteúdo diferente
-            // dependendo do item do menu clicado. Por exemplo, para alternar entre telas:
-            // if (item.textContent.includes('Início')) {
-            //     window.location.href = 'index.html'; // Redireciona para a tela inicial
-            // } else if (item.textContent.includes('Pedido:')) {
-            //     window.location.href = 'pedido.html'; // Redireciona para a tela de pedido (ou permanece aqui)
-            // }
-        });
-    });
+    // --- Toggle Sidebar ---
     const toggleBtn = document.getElementById("toggleSidebar");
-const sidebar = document.getElementById("sidebar");
+    const sidebar = document.getElementById("sidebar");
 
-toggleBtn.addEventListener("click", () => {
-  sidebar.classList.toggle("collapsed");
-});
+    toggleBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("collapsed");
+    });
 
+    // --- Função logout ---
+    function logout() {
+        if (confirm('Você irá deslogar, quer prosseguir?')) {
+            window.location.href = '../aLogin/index.html';
+        }
+    }
+    window.logout = logout;
 
-function logout() {
-    confirm('Você irá deslogar, quer prosseguir?')
-    window.location.href = '../aLogin/index.html'
-}
+    // --- Mostrar nome do gerente ---
+    const nomeGerente = localStorage.getItem('gerente');
+    if (gerenteNomeSpan && nomeGerente) {
+        gerenteNomeSpan.textContent = nomeGerente;
+    } else if (gerenteNomeSpan) {
+        gerenteNomeSpan.textContent = 'Não definido';
+    }
 
-    // --- Chamada inicial para preencher o resumo assim que a página carrega ---
+    // --- Função para gerar código único de pedido ---
+    function gerarCodigoPedido() {
+        const pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
+        const numero = pedidos.length + 1;
+        return `P${String(numero).padStart(3, '0')}`;
+    }
+
+    // --- Função concluir pedido ---
+    window.concluirPedido = () => {
+        const selectedProductSabor = productSelect.value;
+        const quantity = parseInt(quantityInput.value, 10);
+
+        if (!selectedProductSabor || selectedProductSabor === '' || quantity <= 0) {
+            alert('Por favor, selecione um produto e insira uma quantidade válida (maior que zero).');
+            return;
+        }
+
+        let lotes = JSON.parse(localStorage.getItem("lotes")) || [];
+        const loteIndex = lotes.findIndex(lote => lote.sabor === selectedProductSabor);
+
+        if (loteIndex === -1) {
+            alert('Produto não encontrado no estoque.');
+            return;
+        }
+
+        if (quantity > lotes[loteIndex].quantidade) {
+            alert(`Quantidade maior que o estoque disponível para o sabor ${selectedProductSabor}. Estoque atual: ${lotes[loteIndex].quantidade}`);
+            return;
+        }
+
+        // Atualiza estoque
+        lotes[loteIndex].quantidade -= quantity;
+        localStorage.setItem("lotes", JSON.stringify(lotes));
+
+        // Criar novo pedido com campo loja
+        const novoPedido = {
+            codigo: gerarCodigoPedido(),
+            produto: selectedProductSabor,
+            quantidade: quantity,
+            endereco: enderecoLojaSpan.textContent || 'Não definido',
+            gerente: gerenteNomeSpan.textContent || 'Não definido',
+            loja: nomeLoja,   // <<< Salva o nome da loja aqui
+            data: new Date().toLocaleDateString()
+        };
+
+        // Puxa pedidos existentes, adiciona novo e salva
+        let pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
+        pedidos.unshift(novoPedido);
+        localStorage.setItem('pedidos', JSON.stringify(pedidos));
+
+        // Mostrar resumo e perguntar se quer reiniciar
+        const orderSummaryMessage = `
+--- Pedido Concluído ---
+Produto: ${novoPedido.produto}
+Quantidade: ${novoPedido.quantidade}
+Loja: ${novoPedido.loja}
+Endereço: ${novoPedido.endereco}
+Gerente: ${novoPedido.gerente}
+-----------------------
+`;
+
+        if (confirm(orderSummaryMessage + "\nDeseja finalizar o pedido e reiniciar a página?")) {
+            window.location.reload();
+        }
+    };
+
+    // --- Inicializa o resumo ---
     updateOrderSummary();
+
 });

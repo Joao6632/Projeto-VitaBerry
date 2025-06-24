@@ -10,3 +10,4 @@ function logout() {
     window.location.href = '../aLogin/index.html';
   }
 }
+

@@ -16,15 +16,15 @@
     </nav>
 
     <div class="container">
-        <form id="login" onsubmit="return cadastrar()">
+        <form id="login" onsubmit="return salvarUsuario()">
             <h2>Cadastro</h2>
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome</label>
                 <input type="text" class="form-control" id="nome" placeholder="Digite o nome do usuário">
             </div>
             <div class="mb-3">
-                <label for="cpfEmail" class="form-label">CPF</label>
-                <input type="text" class="form-control" id="cpfEmail" placeholder="Digite o CPF do usuário" required oninput="aplicarMascaraCPF(this)">
+                <label for="cpf" class="form-label" oninput="aplicarMascaraCPF(this)">CPF</label>
+                <input type="text" class="form-control" id="cpf" placeholder="Digite o CPF do usuário" required oninput="aplicarMascaraCPF(this)">
             </div>
             
             <div class="mb-3">
@@ -59,7 +59,7 @@
   </div>
   
               
-            <button type="submit" class="btn-iniciar" >Entrar</button>
+            <button type="submit" class="btn-iniciar" >Cadastrar</button>
         </form>
     </div>
     <script>
@@ -71,7 +71,7 @@
                 return false
             } else{
                 alert("Usuário cadastrado! Salve os dados da sessão para efetuar o login.")
-                window.location.href = "/bInicio/index.html";
+                window.location.href = "index.html";
                 return false
 }
                     
@@ -79,16 +79,17 @@
         function verificarFuncao() {
     const funcao = document.getElementById('funcao').value;
     const campoLoja = document.getElementById('campoLoja');
-
+    const nomeUsuario = document.getElementById('nome').value.trim();
     if (funcao === 'gerenteLoja') {
       campoLoja.style.display = 'block'; // mostra o campo loja
+      window.localStorage.setItem("gerente", nomeUsuario);
     } else {
       campoLoja.style.display = 'none'; // esconde se for outra função
       document.getElementById('loja').selectedIndex = 0; // reseta seleção
     }
   }
     </script>
-    <script src="script.js"></script>
+    <script src="scriptcadastro.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
