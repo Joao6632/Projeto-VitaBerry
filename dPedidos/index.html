@@ -35,7 +35,12 @@
       <div class="logo-topbar">
         <img src="imagem/LOGO VITABERRY.png" alt="Logo Vitaberry" />
       </div>
-      <div class="username">(User)</div>
+      <div class="username">
+        <a id="username">Olá, </a>
+        <a href="cadastrouser.html">
+          <img class="addUser" src="/bInicio/imagem/adicionar-usuario.png" alt="Adicionar usuário">
+        </a>
+      </div>
     </div>
 
     <div class="estoque-title">Pedidos - Lojas</div>
@@ -50,27 +55,6 @@
 
     <!-- AQUI OS PEDIDOS VÃO SER INSERIDOS PELO JS -->
     <div id="estoqueContainer"></div>
-  </div>
-
-  <!-- Modais (mantidos iguais) -->
-  <div id="lojaModal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <h2>Para qual loja deseja iniciar a distribuição?</h2>
-      <div class="loja-list">
-        <button class="loja-option">Loja 1</button>
-        <button class="loja-option">Loja 2</button>
-        <button class="loja-option">Loja 3</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="infoModal" class="modal" style="display: none">
-    <div class="modal-content">
-      <span id="closeInfoModal" class="close-modal">&times;</span>
-      <h3>Detalhes do Pedido</h3>
-      <div id="infoModalContent"></div>
-    </div>
   </div>
 
   <script src="script.js"></script>

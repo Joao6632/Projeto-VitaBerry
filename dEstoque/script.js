@@ -5,6 +5,20 @@ const sidebar = document.getElementById("sidebar");
 let loteAtualSelecionado = null;
 let lojaSelecionadaGlobal = null;
 
+//FUNCAO DE MOSTAR USER 
+document.addEventListener("DOMContentLoaded", () => {
+  const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+  const nomeUsuario = document.getElementById("username");
+
+  if (usuarioLogado && usuarioLogado.nome && nomeUsuario) {
+    nomeUsuario.textContent = `Olá, ${usuarioLogado.nome}`;
+  } else {
+    // Se não tiver usuário logado, força logout ou redireciona
+    
+    
+  }
+});
+
 // Modais
 const quantidadeModal = document.getElementById('quantidadeModal');
 

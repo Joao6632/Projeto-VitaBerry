@@ -16,7 +16,7 @@
     </nav>
 
     <div class="container">
-        <form id="login" onsubmit="return salvarUsuario()">
+        <form id="login">
             <h2>Login</h2>
             <div class="mb-3">
                 <label for="cpfEmail" class="form-label">CPF</label>
@@ -33,7 +33,7 @@
                 <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required>
             </div>
             
-            <button type="submit" class="btn-iniciar">Entrar</button>
+            <button type="submit" class="btn-iniciar" onclick="return salvarUsuario()">Entrar</button>
         </form>
     </div>
     <script src="script.js"></script>

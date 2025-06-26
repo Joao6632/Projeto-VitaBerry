@@ -1,124 +1,92 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const estoqueContainer = document.getElementById('estoqueContainer');
-    const filterInput = document.querySelector('.filter-box input');
-    let pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
-  
-    init();
-  
-    function init() {
+  const estoqueContainer = document.getElementById('estoqueContainer');
+  const filterInput = document.querySelector('.filter-box input');
+  let pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
+
+  // Função de mostrar usuário (já existente)
+  const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+  const nomeUsuario = document.getElementById("username");
+
+  if (usuarioLogado && usuarioLogado.nome && nomeUsuario) {
+      nomeUsuario.textContent = `Olá, ${usuarioLogado.nome}`;
+  } else {
+      // Se não tiver usuário logado, força logout ou redireciona
+  }
+
+  init();
+
+  function init() {
       renderPedidos();
       filterInput.addEventListener('input', renderPedidos);
-  
-      estoqueContainer.addEventListener('click', (e) => {
-        const btn = e.target.closest('.info-btn');
-        if (!btn) return;
-  
-        const codigo = btn.dataset.codigo;
-        const pedido = pedidos.find(p => p.codigo === codigo);
-        if (!pedido) return;
-  
-        const itemDiv = btn.closest('.item');
-        let detalhesDiv = itemDiv.querySelector('.detalhes-expandido');
-  
-        if (detalhesDiv) {
-          detalhesDiv.remove(); // fecha
-        } else {
-          detalhesDiv = document.createElement('div');
-          detalhesDiv.className = 'detalhes-expandido';
-          detalhesDiv.style.borderTop = '1px solid #ccc';
-          detalhesDiv.style.marginTop = '10px';
-          detalhesDiv.style.paddingTop = '10px';
-          detalhesDiv.style.fontSize = '14px';
-  
-          detalhesDiv.innerHTML = `
-            <p><strong>Sabor:</strong> ${pedido.produto}</p>
-            <p><strong>Quantidade:</strong> ${pedido.quantidade}</p>
-            <p><strong>Loja:</strong> ${pedido.loja || pedido.endereco}</p>
-            <p><strong>Gerente:</strong> ${pedido.gerente}</p>
-            <p><strong>Data do Pedido:</strong> ${pedido.data}</p>
-          `;
-  
-          itemDiv.appendChild(detalhesDiv);
-        }
-      });
-    }
-  
-    function renderPedidos() {
+  }
+
+  // Função para mostrar/esconder detalhes (adaptada do Estoque)
+  function mostrarDetalhes(itemElement) {
+      itemElement.classList.toggle('expanded');
+  }
+
+  function renderPedidos() {
       const filtro = filterInput.value.toLowerCase();
-  
+      estoqueContainer.innerHTML = ''; // Limpa o container antes de renderizar
+
+      // Filtra os pedidos
       const pedidosFiltrados = pedidos.filter(p =>
-        p.codigo.toLowerCase().includes(filtro) ||
-        p.produto.toLowerCase().includes(filtro) ||
-        p.data.toLowerCase().includes(filtro)
+          p.codigo.toLowerCase().includes(filtro) ||
+          p.produto.toLowerCase().includes(filtro) ||
+          p.data.toLowerCase().includes(filtro) ||
+          p.loja.toLowerCase().includes(filtro) ||
+          p.gerente.toLowerCase().includes(filtro)
       );
-  
-      estoqueContainer.innerHTML = '';
-  
+
       if (pedidosFiltrados.length === 0) {
-        estoqueContainer.innerHTML = '<p>Nenhum pedido encontrado</p>';
-        return;
+          estoqueContainer.innerHTML = '<p>Nenhum pedido encontrado</p>';
+          return;
       }
-  
-      pedidosFiltrados.forEach(pedido =>
-        estoqueContainer.appendChild(createPedidoElement(pedido))
-      );
-    }
-  
-    function createPedidoElement(pedido) {
-      const item = document.createElement('div');
-      item.className = 'item';
-      item.style.position = 'relative';
-      item.style.border = '2px solid black';
-      item.style.borderRadius = '10px';
-      item.style.padding = '15px';
-      item.style.marginBottom = '20px';
-      item.style.backgroundColor = '#fdfdfd';
-  
-      // Info principal
-      const titulo = document.createElement('div');
-      titulo.style.fontWeight = 'bold';
-      titulo.style.fontSize = '18px';
-      titulo.textContent = pedido.codigo;
-  
-      const subtitulo = document.createElement('div');
-      subtitulo.style.fontSize = '15px';
-      subtitulo.textContent = pedido.produto;
-  
-      // Botão info
-      const btn = document.createElement('button');
-      btn.className = 'info-btn';
-      btn.dataset.codigo = pedido.codigo;
-      btn.title = 'Mais informações';
-      btn.textContent = 'i';
-      btn.style.cssText = `
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        cursor: pointer;
-        background: #fff;
-        border: 2px solid black;
-        border-radius: 50%;
-        width: 22px;
-        height: 22px;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      `;
-  
-      item.appendChild(titulo);
-      item.appendChild(subtitulo);
-      item.appendChild(btn);
-  
-      return item;
-    }
-  
-    window.logout = () => {
+
+      pedidosFiltrados.slice().reverse().forEach(pedido => {
+          const item = document.createElement("div");
+          item.classList.add("item");
+
+          // Verifica se o pedido tem quantidade zero para exibir "Esgotado" (se aplicável para pedidos)
+          // Ajuste esta lógica se "esgotado" não for apropriado para pedidos
+          const quantidadeZerada = parseInt(pedido.quantidade) <= 0;
+
+          item.innerHTML = `
+                <div class="item-main">
+                    <div class="item-code">${pedido.codigo}</div>
+                    <div class="item-sabor">${pedido.produto}</div>
+                    ${quantidadeZerada ? '<span class="tag-esgotado">Zerado</span>' : ''}
+                </div>
+                <div class="actions">
+                    <button class="icon-button" onclick="mostrarDetalhes(this.parentElement.parentElement)">
+                        <img src="../dEstoque/imagens/info.png" alt="Informações" class="info-icon">
+                    </button>
+                </div>
+                <div class="item-details">
+                    <p><span class="detail-label">Sabor:</span> ${pedido.produto}</p>
+                    <p><span class="detail-label">Quantidade:</span> ${pedido.quantidade}</p>
+                    <p><span class="detail-label">Loja:</span> ${pedido.loja || pedido.endereco || 'N/A'}</p>
+                    <p><span class="detail-label">Gerente:</span> ${pedido.gerente || 'Não definido'}</p>
+                    <p><span class="detail-label">Data do Pedido:</span> ${pedido.data}</p>
+                    </div>
+            `;
+          estoqueContainer.appendChild(item);
+      });
+  }
+
+  window.mostrarDetalhes = mostrarDetalhes; // Torna a função global para o onclick no HTML
+
+  window.logout = () => {
       if (confirm('Você irá deslogar, quer prosseguir?')) {
-        window.location.href = '../aLogin/index.html';
+          window.location.href = '../aLogin/index.html';
       }
-    };
+  };
+
+  // Sidebar toggle (mantido como está no estoque)
+  const toggleBtn = document.getElementById("toggleSidebar");
+  const sidebar = document.getElementById("sidebar");
+
+  toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("collapsed");
   });
-  
+});

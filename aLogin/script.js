@@ -1,65 +1,56 @@
+// Máscara de CPF
 function aplicarMascaraCPF(input) {
-    let valor = input.value.replace(/\D/g, ''); // tira tudo que não é número
-  
-    if (valor.length > 11) valor = valor.slice(0, 11); // limita a 11 dígitos
-  
-    // aplica a máscara
-    valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
-    valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
-    valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-  
-    input.value = valor;
+  let valor = input.value.replace(/\D/g, '');
+  if (valor.length > 11) valor = valor.slice(0, 11);
+  valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+  valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+  valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  input.value = valor;
+}
+
+// Aplica máscara em tempo real
+document.getElementById('cpfEmail').addEventListener('input', function () {
+  aplicarMascaraCPF(this);
+});
+
+// Função principal de login
+document.getElementById("login").addEventListener("submit", function (e) {
+  e.preventDefault(); // Impede envio padrão
+
+  const cpf = document.getElementById('cpfEmail').value.replace(/\D/g, '');
+  const email = document.getElementById('email').value.trim();
+  const senha = document.getElementById('senha').value.trim();
+
+  // Validações
+  const cpfValido = /^\d{11}$/.test(cpf);
+  const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  if (!cpfValido) {
+    alert('CPF inválido. Digite os 11 números corretamente.');
+    return;
   }
-  
-  const form = document.getElementById('login');
-  
-  form.addEventListener('submit', function (e) {
-    e.preventDefault(); // cancela envio padrão
-  
-    const cpf = document.getElementById('cpfEmail').value.replace(/\D/g, '');
-    const email = document.getElementById('email').value.trim();
-    const senha = document.getElementById('senha').value.trim();
-  
-    const cpfValido = /^\d{11}$/.test(cpf);
-    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  
-    if (!cpfValido) {
-      alert('CPF inválido. Digite os 11 números corretamente.');
-      return;
-    }
-  
-    if (!emailValido) {
-      alert('E-mail inválido. Verifique se está no formato correto (ex: nome@email.com).');
-      return;
-    }
-  
-    if (senha.length < 4) {
-      alert('Senha muito curta. Mínimo 4 caracteres.');
-      return;
-    }
-  
-    // Tudo ok!
-    window.location.href = "../bInicio/index.html";
-  });
-  
-  // Pra aplicar a máscara enquanto digita
-  document.getElementById('cpfEmail').addEventListener('input', function () {
-    aplicarMascaraCPF(this);
-  });
-  
-  function salvarUsuario(){
-    const email = document.getElementById('email').value;
-    const senha = document.getElementById('senha').value;
-    
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-    
-    const usuarioLogado = usuarios.find(u => u.email === email && u.senha === senha);
-    
-    if (usuarioLogado) {
-      // Salva só o usuário logado
-      localStorage.setItem("usuarioLogado", JSON.stringify(usuarioLogado));
-      window.location.href = "painel.html"; // ou a tela principal
-    } else {
-      alert("Email ou senha inválidos");
-    }
+
+  if (!emailValido) {
+    alert('E-mail inválido. Verifique se está no formato correto.');
+    return;
   }
+
+  if (senha.length < 4) {
+    alert('Senha muito curta. Mínimo 4 caracteres.');
+    return;
+  }
+
+  // Verificação de usuário
+  const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+  const usuarioLogado = usuarios.find(user =>
+    user.email === email && user.senha === senha
+  );
+
+  if (usuarioLogado) {
+    localStorage.setItem("usuarioLogado", JSON.stringify(usuarioLogado));
+    window.location.href = "../bInicio/index.html"; // ou painel.html
+  } else {
+    alert("E-mail ou senha incorretos.");
+  }
+});

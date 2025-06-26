@@ -11,6 +11,20 @@ function logout() {
   }
 }
 
+//FUNCAO DE MOSTAR USER 
+document.addEventListener("DOMContentLoaded", () => {
+  const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+  const nomeUsuario = document.getElementById("username");
+
+  if (usuarioLogado && usuarioLogado.nome && nomeUsuario) {
+    nomeUsuario.textContent = `Olá, ${usuarioLogado.nome}`;
+  } else {
+    // Se não tiver usuário logado, força logout ou redireciona
+    
+    
+  }
+});
+
 // Corrigir o botão de criação do lote
 document.querySelector(".create-lot-button").addEventListener("click", function (event) {
   event.preventDefault(); // Evita o recarregamento da página
@@ -40,6 +54,16 @@ document.querySelector(".create-lot-button").addEventListener("click", function 
   lotes.push(novoLote);
   localStorage.setItem("lotes", JSON.stringify(lotes));
 
-  alert("Lote criado com sucesso!");
+  alert("Lote criado com sucesso!"); 
   window.location.href = "../dEstoque/index.html";
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const hojeBR = new Date().toLocaleDateString('pt-BR'); // dd/mm/aaaa
+  const fab    = document.getElementById('dataFabricacao');
+  if (fab.value === '(automático)') fab.value = hojeBR;
+
+  const entrada = document.getElementById('dataEntradaEstoque');
+  if (entrada && entrada.value === '(automático)') entrada.value = hojeBR;
+});
+

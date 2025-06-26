@@ -524,3 +524,8 @@ a {
 .btn-em-distribuicao:not(:disabled):hover {
   background-color: #f0f0f0 !important;
 }
+.addUser{
+  width: 26px;
+  left: 20px;
+  padding-left: 6px;
+}

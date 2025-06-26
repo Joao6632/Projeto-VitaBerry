@@ -171,3 +171,8 @@
     text-decoration: none;
     color: inherit;
   }
+  .addUser{
+    width: 26px;
+    left: 20px;
+    padding-left: 6px;
+  }

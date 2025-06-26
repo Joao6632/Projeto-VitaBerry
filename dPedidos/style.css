@@ -1,195 +1,271 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-  }
-  
-  body {
-    display: flex;
-    height: 100vh;
-  }
-  
-  aside {
-    width: 200px;
-    background: #fff;
-    border-right: 2px solid black;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    position: relative;
-    transition: width 0.3s ease;
-  }
-  
-  aside.collapsed {
-    width: 60px;
-  }
-  
-  #toggleSidebar {
-    position: absolute;
-    top: 60px;
-    right: -15px;
-    width: 30px;
-    height: 30px;
-    border: 2px solid black;
-    background: white;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  aside.collapsed #toggleSidebar {
-    transform: rotate(180deg);
-  }
-  
-  .nav-item {
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s;
-    white-space: nowrap;
-  }
-  
-  .nav-item:hover,
-  .nav-selected {
-    background: #9469fa;
-    color: black;
-    border: 2px solid black;
-  }
-  
-  .logout {
-    margin-top: auto;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-  }
-  
-  .logout-icon {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .logout-text {
-    font-size: 14px;
-  }
-  
-  aside.collapsed .nav-item,
-  aside.collapsed .logout-text {
-    display: none;
-  }
-  
-  .container {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  .topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 60px;
-    border-bottom: 2px solid black;
-    padding: 0 20px;
-  }
-  
-  .logo-topbar img {
-    height: 50px;
-  }
-  
-  .estoque-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 20px 0;
-  }
-  
-  .filter-box {
-    display: flex;
-    align-items: center;
-    border: 2px solid black;
-    border-radius: 20px;
-    padding: 10px;
-    max-width: 500px;
-  }
-  
-  .filter-box input {
-    border: none;
-    outline: none;
-    margin-left: 10px;
-    flex: 1;
-  }
-  
-  /* ==== ITENS DO PEDIDO ==== */
-  .item {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 3px solid black;
-    border-radius: 10px;
-    padding: 10px 15px;
-    margin: 15px 0;
-  }
-  
-  .item strong {
-    font-size: 16px;
-  }
-  
-  .info-btn {
-    cursor: pointer;
-    background: #6f42c1;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 22px;
-    height: 22px;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 22px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* Detalhes do pedido */
-  .detalhes-expandido {
-    margin-top: 10px;
-    padding: 10px 15px;
-    background-color: #f1f1f1;
-    border-left: 3px solid #6f42c1;
-    font-size: 14px;
-  }
-  
-  /* Modal padrão */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-  
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 3px solid black;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 400px;
-    position: relative;
-  }
-  
-  .close-modal {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+}
+
+aside {
+  width: 200px;
+  background: #fff;
+  border-right: 2px solid black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+aside.collapsed {
+  width: 60px;
+}
+
+#toggleSidebar {
+  position: absolute;
+  top: 60px;
+  right: -15px;
+  width: 30px;
+  height: 30px;
+  border: 2px solid black;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.3s ease;
+}
+
+aside.collapsed #toggleSidebar {
+  transform: rotate(180deg);
+}
+
+.nav-item {
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.nav-item:hover,
+.nav-selected {
+  background: #9469fa;
+  color: black;
+  border: 2px solid black;
+}
+
+.logout {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.logout-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.logout-text {
+  font-size: 14px;
+}
+
+aside.collapsed .nav-item,
+aside.collapsed .logout-text {
+  display: none;
+}
+
+.container {
+  flex: 1;
+  padding: 20px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  border-bottom: 2px solid black;
+  padding: 0 20px;
+}
+
+.logo-topbar {
+  height: 50px;
+}
+
+.logo-topbar img {
+  height: 100%;
+  object-fit: contain;
+}
+
+.estoque-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.filter-box {
+  display: flex;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 10px;
+  max-width: 500px;
+}
+
+.filter-box input {
+  border: none;
+  outline: none;
+  margin-left: 10px;
+  flex: 1;
+}
+
+/* Estilos para os itens de pedidos */
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Alinha o conteúdo ao topo */
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+  position: relative; /* Para posicionar a tag "Esgotado" */
+}
+
+.item-main {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.item-code {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 0;
+  line-height: 0.5;
+}
+
+.item-sabor {
+  font-size: 16px;
+  margin-top: 2px;
+  margin-bottom: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.icon-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.item-details {
+  display: none; 
+  width: 100%;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px solid #ddd;
+}
+
+.item-details p {
+  margin-bottom: 8px;
+}
+
+.detail-label {
+  font-weight: bold;
+  display: inline-block;
+  min-width: 150px;
+}
+
+/* Quando os detalhes estão visíveis */
+.item.expanded {
+  background-color: #f8f8f8;
+}
+
+.item.expanded .item-details {
+  display: block;
+}
+
+/* Tag Esgotado/Zerado */
+.tag-esgotado { 
+  position: absolute;
+  top: 10px;
+  right: 70px; 
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  border: 1px solid #f5c6cb;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.addUser {
+  width: 26px;
+  left: 20px;
+  padding-left: 6px;
+}
+
+/* Modal padrão - mantido do Pedidos */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 3px solid black;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 400px;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}

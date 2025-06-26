@@ -6,20 +6,29 @@ toggleBtn.addEventListener("click", () => {
   sidebar.classList.toggle("collapsed");
 });
 
+//FUNCAO DE MOSTAR USER 
+document.addEventListener("DOMContentLoaded", () => {
+  const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+  const nomeUsuario = document.getElementById("username");
+
+  if (usuarioLogado && usuarioLogado.nome && nomeUsuario) {
+    nomeUsuario.textContent = `Olá, ${usuarioLogado.nome}`;
+  } else {
+    // Se não tiver usuário logado, força logout ou redireciona
+    
+    
+  }
+});
+
 // Função de logout
 function logout() {
   if (confirm('Você irá deslogar, quer prosseguir?')) {
     window.location.href = '../aLogin/index.html';
   }
 }
-// MOSTRAR NOME DE USUARIO
-
-<<<<<<< HEAD
-=======
 
 
 
->>>>>>> 59cdfd4 (Versão 1.2)
 // —————— GRÁFICO DE ESTOQUE TOTAL ——————
 document.addEventListener("DOMContentLoaded", () => {
   // Verifica se o elemento do gráfico existe na página
@@ -168,8 +177,4 @@ function showErrorMessage(message) {
         <small>Verifique o console para detalhes</small>
       </div>`;
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 59cdfd4 (Versão 1.2)

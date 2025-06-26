@@ -27,7 +27,12 @@
       <div class="logo-topbar">
         <img src="imagem/LOGO VITABERRY.png" alt="Logo Vitaberry"/>
       </div>
-      <div class="username">(User)</div>
+      <div class="username">
+        <a id="username">Olá, </a>
+        <a href="cadastrouser.html">
+          <img class="addUser" src="/bInicio/imagem/adicionar-usuario.png" alt="Adicionar usuário">
+        </a>
+      </div>
     </div>
 
     <div class="main-content">
@@ -61,15 +66,20 @@
                 </div>
                 <div>
                     <label for="qtdBaldes">Quantidade de baldes</label>
-                    <input type="number" id="qtdBaldes" min="0">
+                    <input type="number" id="qtdBaldes" placeholder="Insira aqui a quantidade de baldes" min="0">
                 </div>
             </div>
     
             <div class="form-row">
-                <div>
-                    <label for="dataFabricacao">Data de fabricação</label>
-                    <input type="date" id="dataFabricacao">
-                </div>
+              <div>
+                <label for="dataFabricacao">Data de fabricação</label>
+                <input type="text"
+                       id="dataFabricacao"
+                       value="(automático)"
+                       readonly
+                       class="auto">
+              </div>
+              
                 <div>
                     <label for="dataEntradaEstoque">Data de entrada no estoque</label>
                     <input type="text" id="dataEntradaEstoque" value="(automático)" readonly>
